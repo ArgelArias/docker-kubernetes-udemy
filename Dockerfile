@@ -4,4 +4,4 @@ RUN apt update
 RUN apt install nginx -y
 RUN echo 'Hello world' > /var/www/html/index.html
 
-CMD ["nginx", "-g", "'daemon off;'"]
+CMD nginx -g 'daemon off;'
