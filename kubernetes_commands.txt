@@ -1,0 +1,13 @@
+#create a namespace
+$ kubectl namespace <namespace-name>
+
+#list the namespaces
+$ kubectl get namespaces
+#or
+$ kubectl get ns
+
+#set a namespace as the current one
+$ kubectl config set-context --current --namespace=<namespace-name>
+
+#launch a depĺoyment
+$ kubectl create deployment <deployment-name> --image=<docker-image>
