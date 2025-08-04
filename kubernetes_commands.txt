@@ -1,3 +1,6 @@
+#enter into the pod
+$ kubectl exec -it <pod-name> --bash
+
 #create a namespace
 $ kubectl namespace <namespace-name>
 
@@ -11,3 +14,23 @@ $ kubectl config set-context --current --namespace=<namespace-name>
 
 #launch a depĺoyment
 $ kubectl create deployment <deployment-name> --image=<docker-image>
+
+#list the deployments
+$ kubectl get deploy
+
+#list the replica sets
+$ kubectl get rs
+
+#list the pods
+$ kubectl get pod
+
+#watch the lastest entries of the logs of a pod
+$ kubectl logs <pod-name>
+
+#create a service, expose the deployment to the world
+#the type LoadBalancer is the one that will expose it to the world
+$ kubectl expose <deploy-name> --port=80 --name=<service-name> --type=LoadBalancer
+
+#list the services
+$ kubectl get svc
+#the external-IP is the address to the world
