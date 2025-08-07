@@ -45,3 +45,55 @@ docker rm <CONTAINER ID> -f
 docker exec -it <container id> bash
 #only sending a command without enter in the container
 docker exec <container id> bash -c "<command>"
+
+######################################VOLUMES#####################################
+######################################OLD WAY#####################################
+docker create --name <container-name> --mount type=bind,source="$(pwd)/app",target=/app <image-id>
+
+
+######################################NEW WAY#####################################
+#list volumes
+docker volume ls
+
+#create a volume
+docker volume create <volume-name>
+
+#inspect a volume
+docker volume inspect <volume-name>
+
+#remove the unused local volumes
+docker volume prune
+
+#remove one or more volumes
+docker rm <volume-name>
+
+#create the container with the volume using --mount
+docker create --mount source=<volume-name>,target=/app --name <container-name> <image>
+docker start <container-name>
+
+#create the container with the volume using -v
+docker create -v <source>:<target> --name <container-name> <image>
+docker start <container-name>
+#example
+docker create -v <volume-name>:/app --name <container-name> <image>
+docker start <container-name>
+
+
+######################################NETWORK#####################################
+#list the networks
+docker network ls
+
+#create a network
+docker network create --driver <driver-type> <network-name>
+#for example
+docker network create --driver bridge  <network-name>
+
+#inspect a network
+docker inspect <network-name>
+
+#remove one or more networks
+docker network rm <network-name>
+
+#create a container using an specific network
+docker create --name <container-name> --network <network-name> <image>
+docker start <container-name>
