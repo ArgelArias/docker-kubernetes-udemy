@@ -97,3 +97,15 @@ docker network rm <network-name>
 #create a container using an specific network
 docker create --name <container-name> --network <network-name> <image>
 docker start <container-name>
+
+######################################DOCKER HUB#####################################
+#login
+docker login
+
+#first tag the image to upload
+docker tag <image-name>:<version> <dockeruser>/<image-name>:<tag>
+#then push the image tagged
+docker push <dockeruser>/<image-name>:<tag>
+
+#pull the image
+docker pull <dockeruser>/<image-name>:<tag>
