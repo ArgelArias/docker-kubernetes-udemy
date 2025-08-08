@@ -30,10 +30,25 @@ docker create <image identifier>
 #-P when you create with an EXPOSED port from the Dockerfile
 
 #start the container
-docker start <container identifier>
+docker start <container-name>
 
 #stop a container
-docker stop <container indetifier>
+docker stop <container-name>
+
+#restart a container
+docker restart <container-name>
+
+#kill a container
+docker kill <container-name>
+
+#pause a container
+docker pause <container-name>
+
+#unpause a container
+docker unpause <container-name>
+
+#create and start the container with one command
+docker run -d <image-id>
 
 #remove a container
 docker rm <CONTAINER ID>
