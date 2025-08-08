@@ -109,3 +109,8 @@ docker push <dockeruser>/<image-name>:<tag>
 
 #pull the image
 docker pull <dockeruser>/<image-name>:<tag>
+
+
+######################################ENV VARS#####################################
+#-e flag for env vars, -e can be used multiple times
+docker create -e <var-name>=<var-value> --name <container-name> <image>
