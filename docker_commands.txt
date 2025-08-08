@@ -129,3 +129,17 @@ docker pull <dockeruser>/<image-name>:<tag>
 ######################################ENV VARS#####################################
 #-e flag for env vars, -e can be used multiple times
 docker create -e <var-name>=<var-value> --name <container-name> <image>
+
+
+######################################RESTART POLICIES#####################################
+-no:  no restart, default value
+-on-failure[:max-retries]
+-always: will restart on failure, restart of the principal machine, will restart even on stop from the user
+-unless-stopped: will restart on failure, restart of the principal machine, will not restart on stop from the user
+
+#example
+docker create --name <container-name> --restart always <image>
+docker run --name <container-name> --restart unless-stopped -d <image>
+
+#update the policy on a running container
+docker update --restart no <container-name>
