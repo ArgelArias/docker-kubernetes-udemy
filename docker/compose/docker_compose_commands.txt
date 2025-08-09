@@ -1,0 +1,53 @@
+#create and start the container
+docker compose up -d
+
+#just create
+docker compose create
+
+#start the service
+docker compose start
+
+#restart the service
+docker compose restart
+
+#watch the compose containers
+docker compose ps
+
+#stop and remove resources
+docker compose down
+
+#just stop
+docker compose stop
+
+#remove stopped container
+docker compose rm
+
+#pause and unpause
+docker compose pause
+docker compose unpause
+
+#watch the live evenst
+docker compose events
+
+#launch a command on the container
+docker compose exec <service-name> <command>
+#example
+docker compose exec <service-name> bash
+docker compose exec <service-name> ls /tmp
+
+#list the images on the docker compose project
+docker compose images
+
+#kill a service
+docker compose kill
+#or
+docker compose kill <service>
+
+#watch the binding ports on the service
+docker compose port <service-name> <PORT>
+
+#run a command on a new service without affecting the existing one, this will create a service just to run the command and will stop the same
+docker compose run <service-name> <command>
+
+#top
+docker compose top
