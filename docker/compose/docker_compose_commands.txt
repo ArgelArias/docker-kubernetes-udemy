@@ -51,3 +51,10 @@ docker compose run <service-name> <command>
 
 #top
 docker compose top
+
+#watch the logs of the services
+docker compose logs
+#only for an specific service
+docker compose logs <service-name>
+#follow mode
+docker compose logs <service-name> -f
