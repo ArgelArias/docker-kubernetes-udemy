@@ -117,6 +117,9 @@ docker start <container-name>
 #login
 docker login
 
+#logout
+docker logout
+
 #first tag the image to upload
 docker tag <image-name>:<version> <dockeruser>/<image-name>:<tag>
 #then push the image tagged
@@ -143,3 +146,64 @@ docker run --name <container-name> --restart unless-stopped -d <image>
 
 #update the policy on a running container
 docker update --restart no <container-name>
+
+
+######################################COMMIT#####################################
+#creates a new image based on a container
+#for example you made some changes on a container that you want to be persistant so create a new image based on those changes
+docker commit <container-name> <new-image-name>:<tag>
+
+
+
+######################################MORE COMMANDS#####################################
+#copy files between container and local files and viceversa
+docker cp <container-name>:<container-path> <local-path>
+
+#watch the changes of the files in the container vs the original of the image
+docker diff <container-name>
+
+#watch all the docker events in real time
+docker events
+
+#export a container filesystem to a tar
+docker export <container-name> -o <file.tar>
+
+#import from a tar to a image
+docker import <file.tar> <image-name>:<tag>
+
+#watch the history of an image
+docker history <image-name>
+
+#load an image from the STDIN
+cat <image-file> | docker load
+
+#watch to logs of a container, like a tail
+docker logs <container-name>
+#or as tail -f
+docker logs <container-name> -f
+
+#watch the mapping ports of a container
+docker port <container-name>
+
+#rename a container
+docker rename <container-name> <new-container-name>
+
+#other way to remove an image
+docker rmi <image-name>
+
+#save an image to a tar
+docker save <image-name> -o <file.tar>
+
+#search an image in the docker hub
+docker search <string-to-search>
+
+#watcht the stats of the containers
+docker stats
+#or only the required container
+docker stats <container-name>
+
+#watch the process on a container in a top way
+docker top <container-name>
+
+#block until a container stops, and print the exit code
+docker wait <container-name>
