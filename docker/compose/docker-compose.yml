@@ -1,6 +1,7 @@
 services:
   web:
-    image: nginx:latest
+    restart: unless-stopped
+    build: ./dockerfiles/web/
     ports:
       - "8080:80"
     volumes:
@@ -8,6 +9,9 @@ services:
       - logvolume01:/var/log
     links:
       - redis
+    environment:
+      - DEBUG=1
+      - NAME=CARLOS
 
   redis:
     image: redis
