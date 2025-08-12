@@ -1,0 +1,33 @@
+#start the minikube
+$ minikube start 
+
+#start with an specified version of kubernetes
+$ minikube start --kubernetes-version=1.22.6
+
+#check the status
+$ minikube status
+
+#stop the minukube
+$ minikube stop
+
+#check the ip of the cluster
+$ minikube ip
+
+#delete the cluste
+$ minikube delete
+
+#list the add-ons
+$ minikube addons list
+
+#enable an add-on
+$ minikube addons enable <add-on-name>
+#example
+$ minikube addons enable dashboard 
+
+#run the add-on
+$minikube <addon-name>
+#example
+$ minikube dashboard
+
+#connect to cluster server
+$ minikube ssh
