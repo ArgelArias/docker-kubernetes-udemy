@@ -41,5 +41,18 @@ $ kubectl get nodes
 #list all the objects on the namespace
 $ kubectl get all
 
+#############################DECLARATIVE WAY###################################
 #apply a manifest
 $ kubectl apply -f <YAML-file>
+
+#delete the objects created by the manifest
+$ kubectl delete -f <YAML-file>
+
+#############################IMPERAVITE WAY###################################
+#apply a manifest
+$ kubectl create deploy --image=nginx:latest --replica=2 <deploy-name> 
+
+#delete the objects created by the manifest
+$ kubectl delete deploy <deploy-name>
+
+
