@@ -1,3 +1,7 @@
+#install minikube
+curl -LO https://github.com/kubernetes/minikube/releases/latest/download/minikube-linux-amd64
+sudo install minikube-linux-amd64 /usr/local/bin/minikube && rm minikube-linux-amd64
+
 #start the minikube
 $ minikube start 
 
@@ -25,9 +29,39 @@ $ minikube addons enable <add-on-name>
 $ minikube addons enable dashboard 
 
 #run the add-on
-$minikube <addon-name>
+$ minikube <addon-name>
 #example
 $ minikube dashboard
 
 #connect to cluster server
 $ minikube ssh
+
+#########################CONFIGURATION##################################
+#see the options to cofigure
+$ minikube config
+
+#see the changes made on the configuration
+$ minikube config view
+
+#set a version of kubernetes on the configuration
+$ minikube config set kubernetes-version v1.22.6
+
+#set the number of cpus
+$ minikube config set cpus 4
+
+#set the megabytes of memory
+$ minikube config set memory 10000
+
+#config can be also delivered as parameters on the minikube start command, but is easier to have them on the config
+#########################################################################
+
+#list the profiles
+$ minikube profile list
+
+#create a profile
+$ minikube start -p <profile-name>
+#could have profiles with different config options, for example the version of kubernetes
+$ minikube start -p <profile-name> --kubernetes-version=<version-number>
+
+#run kubectl for each profile
+minikube -p <profile-name> kubectl get nodes

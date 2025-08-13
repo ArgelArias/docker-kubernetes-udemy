@@ -34,3 +34,12 @@ $ kubectl expose <deploy-name> --port=80 --name=<service-name> --type=LoadBalanc
 #list the services
 $ kubectl get svc
 #the external-IP is the address to the world
+
+#list the nodes on the cluste
+$ kubectl get nodes
+
+#list all the objects on the namespace
+$ kubectl get all
+
+#apply a manifest
+$ kubectl apply -f <YAML-file>
