@@ -1,0 +1,16 @@
+services:
+  web:
+    restart: always
+    environment:
+      DEBUG: "True"
+    build:
+      context: .
+      dockerfile: Dockerfile-local
+    ports:
+      - "5000:5000"
+    volumes:
+      - ./src/:/src/
+      - logvolume01:/var/log
+
+volumes:
+  logvolume01: {}

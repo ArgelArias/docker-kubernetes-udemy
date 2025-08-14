@@ -17,3 +17,7 @@ restart python
 
 #restart the process outside the supervisor console
 supervisorctl restart python
+
+##############Now with Docker Compose####################
+docker compose build
+docker compose up
