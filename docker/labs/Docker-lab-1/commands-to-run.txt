@@ -1,0 +1,7 @@
+#build the container
+docker build -t py-lab-img .
+
+#run the container
+docker run -P --name docker-lab-1 py-lab-img:latest
+
+#take the ip and port from the container 'docker ps -a'
