@@ -8,6 +8,7 @@ ADD supervisor_services.conf /etc/supervisor/conf.d/
 ADD requirements.txt /tmp
 RUN python3 -m pip install --upgrade pip
 RUN pip3 install -r /tmp/requirements.txt
+RUN pip3 install mysql-connector-python   
 RUN rm -rf /tmp/requirements.txt
 
 ADD src/ /src/
