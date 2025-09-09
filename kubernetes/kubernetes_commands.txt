@@ -24,6 +24,12 @@ $ kubectl get rs
 #list the pods
 $ kubectl get pod
 
+#list the pods with more info
+$ kubectl get pod -o wide
+
+#describe the pod
+$ kubectl describe pod <pod-name>
+
 #watch the lastest entries of the logs of a pod
 $ kubectl logs <pod-name>
 
