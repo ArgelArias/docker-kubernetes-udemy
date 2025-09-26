@@ -1,5 +1,7 @@
 #enter into the pod
-$ kubectl exec -it <pod-name> --bash
+$ kubectl exec -it <pod-name> -- bash
+#if there is multiple container in the pod
+$ kubectl exec -it <pod-name> -c <container-name> -- bash
 
 #create a namespace
 $ kubectl namespace <namespace-name>
@@ -22,13 +24,34 @@ $ kubectl get deploy
 $ kubectl get rs
 
 #list the pods
-$ kubectl get pod
+$ kubectl get pods
 
 #list the pods with more info
-$ kubectl get pod -o wide
+$ kubectl get pods -o wide
 
-#describe the pod
-$ kubectl describe pod <pod-name>
+#watch the pods in live mode, for live monitoring
+$ kubectl get pods -w
+
+#describe the pods
+$ kubectl describe pods <pod-name>
+
+#watch the pods with the labels
+$ kubectl get pods --show-labels
+
+#SELECTOR, like a query on the command based on the labels
+$ kubectl get pods --selector <label>=<label-value>
+#for example
+$ kubectl get pods --selector environment=testing
+#also can be used with a query
+$ kubectl get pods --selector '<query>'
+#for example
+$ kubectl get pods --selector 'environment in (prod, dev, testing)'
+$ kubectl get pods --selector 'environment notin (prod, dev, testing)'
+
+#search by labels
+$ kubectl get pods -l <label-name>
+#for example
+$ kubectl get pods -l environment
 
 #watch the lastest entries of the logs of a pod
 $ kubectl logs <pod-name>
@@ -46,6 +69,8 @@ $ kubectl get nodes
 
 #list all the objects on the namespace
 $ kubectl get all
+#list with more details
+$ kubectl get all -o wide
 
 #############################DECLARATIVE WAY###################################
 #apply a manifest
