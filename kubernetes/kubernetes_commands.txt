@@ -25,6 +25,8 @@ $ kubectl get rs
 
 #list the pods
 $ kubectl get pods
+#list the pods from all the namespaces
+$ kubectl get pods -A
 
 #list the pods with more info
 $ kubectl get pods -o wide
@@ -72,18 +74,41 @@ $ kubectl get all
 #list with more details
 $ kubectl get all -o wide
 
+#list all the objects from another namespace
+$ kubectl get all -n <namespace-name>
+
 #############################DECLARATIVE WAY###################################
 #apply a manifest
 $ kubectl apply -f <YAML-file>
+#in an specific namespace
+$ kubectl apply -f <YAML-file> -n <ns-name>
+
+#apply all the manifest in a directory
+$ kubectl apply -f .
+#or
+$ kubectl apply -f <directory>
 
 #delete the objects created by the manifest
 $ kubectl delete -f <YAML-file>
 
+#delete all the objects created with the manifests on the present directory
+$ kubectl delete -f .
+
 #############################IMPERAVITE WAY###################################
-#apply a manifest
+#apply without a manifest
 $ kubectl create deploy --image=nginx:latest --replica=2 <deploy-name> 
 
 #delete the objects created by the manifest
 $ kubectl delete deploy <deploy-name>
 
+#force kill for pod or any object
+# kubectl delete pods -all --force --grace-period=0
 
+##############################################################################
+
+#scale replicasets or replicationcontrollers
+$ kubectl scale rs <name> --replicas=5
+$ kubectl scale rc <name> --replicas=5
+
+#get the yaml for creation of any object
+$ kubectl create ns <ns-name> --dry-run=client -o yaml
