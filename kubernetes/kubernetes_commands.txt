@@ -112,3 +112,14 @@ $ kubectl scale rc <name> --replicas=5
 
 #get the yaml for creation of any object
 $ kubectl create ns <ns-name> --dry-run=client -o yaml
+
+#expose a service to a port from the cluster
+$ kubectl expose rs <rs-name> --port <port-number>
+#example
+$ kubectl expose rs landingpage --port 80
+
+#delete a service
+$ kubectl delete svc <service-name>
+
+# get the yaml for the same
+$ kubectl expose rs landingpage --port 80 --dry-run=client -o yaml
