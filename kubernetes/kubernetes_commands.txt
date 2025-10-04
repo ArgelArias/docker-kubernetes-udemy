@@ -123,3 +123,26 @@ $ kubectl delete svc <service-name>
 
 # get the yaml for the same
 $ kubectl expose rs landingpage --port 80 --dry-run=client -o yaml
+
+################rollout, command for deployments#####################
+
+#see the history of changes on a deployment
+$ kubectl rollout history deploy <deploy-name>
+
+#display with details the revision
+$ kubectl rollout history deploy <deploy-name> --revision=<revision-number>
+
+#rollout to any previous revision of the deployment
+$ kubectl rollout undo deploy <deploy-name> --to-revision=<revision-number>
+
+#rollout to the immediately previous revision
+$ kubectl rollout undo deploy <deploy-name> 
+
+#edit the image without change the manifest
+$ kubectl set image deploy <deploy-name> <container-name(from the manifest)>=<new-image>
+
+#check the status of the rollout
+$ kubectl rollout status deploy <deploy-name>
+
+#add the change-cause to the history
+$ kubectl annotate deploy <deploy-name> kubernetes.io/change-cause="<cause>"
