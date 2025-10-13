@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Pod
+metadata:
+    name: nginx-cm-literal
+spec:
+    containers:
+    - name: nginx
+      image: nginx
+      env:
+      - name: foo
+        value: bar
+      - name: ENVIRONMENT-TEST
+        valueFrom:
+          configMapKeyRef:
+            name: test-cm
+            key: variable1

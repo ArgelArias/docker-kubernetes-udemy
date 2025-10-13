@@ -146,3 +146,15 @@ $ kubectl rollout status deploy <deploy-name>
 
 #add the change-cause to the history
 $ kubectl annotate deploy <deploy-name> kubernetes.io/change-cause="<cause>"
+
+########################Config Map#####################################
+#RO volumes, only for congifuration
+
+#yaml for cm from literal
+$ kubectl create cm <cm-name> --from-literal <key>=<value> --dry-run=client -o yaml
+
+#yaml for cm from file
+$ kubectl create cm <cm-name> --from-file=<directory-path> --dry-run=client -o yaml
+
+#port forwarding
+$ kubectl port-forward <pod-name> <local-port>:<container-port>
