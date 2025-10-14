@@ -158,3 +158,21 @@ $ kubectl create cm <cm-name> --from-file=<directory-path> --dry-run=client -o y
 
 #port forwarding
 $ kubectl port-forward <pod-name> <local-port>:<container-port>
+
+#########################SECRETS##############################
+
+#list the secrets
+$ kubectl get secrets
+#list the secrets for all the namespaces
+$ kubectl get secrets -A
+
+# create a secret
+$ kubectl create secret <secret-type> <secret-name> --from-file=<file-name>
+#example
+# kubectl create secret generic creds --from-file=username.txt --from-file=password.txt
+
+#get the info from secrets
+$ kubectl describe secret <secret-name>
+#or more usefull
+$ kubectl get secret <secret-name> -o yaml
+$ echo <encrypted-text> | base64 -d
