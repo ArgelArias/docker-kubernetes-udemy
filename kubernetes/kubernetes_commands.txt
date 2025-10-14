@@ -34,6 +34,11 @@ $ kubectl get pods -o wide
 #watch the pods in live mode, for live monitoring
 $ kubectl get pods -w
 
+#watch in a Linux way, better for me, -n is each seconds the command will be throu
+$ watch -n1 "<commmand>"
+#example
+$ watch -n1 "kubectl get pods"
+
 #describe the pods
 $ kubectl describe pods <pod-name>
 
