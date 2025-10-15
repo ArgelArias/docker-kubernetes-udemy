@@ -8,6 +8,9 @@ winget install Kubernetes.minikube
 #start the minikube
 $ minikube start 
 
+#start minikube in multinode mode
+$ minikube start --nodes 3
+
 #start with an specified version of kubernetes
 $ minikube start --kubernetes-version=1.22.6
 
