@@ -1,0 +1,57 @@
+Pod:
+    The minimum object is Kubernetes, where is inside will be at least one container.
+    Could be multiple containers inside a single Pod.
+
+ReplicationController: (Deprecated)
+    Deprecated better to use ReplicaSet instead
+
+ReplicaSet:
+    Ensures a stable number of pods are running, creating new ones if they crash or are deleted.
+    Can manage existing pods that match its selector, not just those it originally created. Which ReplicationController cannot
+    Availability, Scalability, Self-healing, Stability
+
+Deployments:
+    All from ReplicaSet + Rolling Updates, Rollbacks, Version Control and History
+
+Services:
+    To expose a set of pods to only 1 IP
+    -ClusterIP : Creates an IP address to access from inside the cluster
+    -NodePort : Creates an IP address to access from outside the cluster
+    -LoadBalancer : For LoadBalancer in enviroments where is possible, like in AWS EKS
+    -ExternalName : Creates a link to an external address, accessing only by the object name
+
+Volumes:
+    Goes when the pod dies
+
+Persitent volumes:
+    They are out of the Namespace scope
+    Independent from any pod
+    Need a PersitentVolumenClaim to be accessed
+
+ConfigMaps:
+    Object of value key pair, use for configuration files or env vars where data is not sencible
+
+Secrets:
+    For storing sencible data, is encrypted in Base64
+
+StatefulSets:
+    Like Deployments but this creates the pod with an ordinal order (app-0, app-1, and so on)
+    Persistent stora is relinked if a pod is replaced
+    Stable network Identities for the same ordinal naming feature
+    Ideal for Databases, Message Queues applications (like Kafka)
+
+Affinity:
+    For multi node enviroments.
+    Preferred, and Required.
+
+DaemonSets:
+    For multi node enviroments.
+    It ensures that one pod will be created in each node existing in the cluster.
+    Used for monitoring pods when you want to monitor every node
+
+Probes:
+    For ensuring the startup, liveness and readiness of the pods
+    Can be check with a command, httpGet or tcpSocket.
+
+Jobs:
+    
