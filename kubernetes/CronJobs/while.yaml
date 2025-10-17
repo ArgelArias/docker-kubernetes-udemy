@@ -1,0 +1,18 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: while
+spec:
+  suspend: false #to enable or disable the cronjob
+  ttlSecondsAfterFinished: 100 #time in seconds to keep the job after finished
+  schedule: "* * * * *"
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+          - name: test
+            image: busybox
+            command: [ "bin/bash", "-c" ]
+            args: [ "i=0 \n while [ $i -lt 20 ]\n do\n /bin/echo Hello World in line $i\n let i=$i+1\n sleep 1\n done" ]
+          restartPolicy: Never
