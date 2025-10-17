@@ -181,3 +181,10 @@ $ kubectl describe secret <secret-name>
 #or more usefull
 $ kubectl get secret <secret-name> -o yaml
 $ echo <encrypted-text> | base64 -d
+
+#########################SECRETS##############################
+#how to suspend a CronJob
+#add the following line on the manifest, under the spec of the Cronjob
+suspend: true
+
+#for remove the suspend state, put it to false, or simply delete the line from the manifest.

@@ -54,4 +54,9 @@ Probes:
     Can be check with a command, httpGet or tcpSocket.
 
 Jobs:
-    
+    Creates a Pod or various in case of parallelism, for just run an specific job, could be any program.
+    After run it will be removed, logs are availible after the termination of the job pod
+
+CronJobs:
+    Like crontab in Linux.
+    It creates a Job which crates a pod for execute the task needed on the scheduled time.
