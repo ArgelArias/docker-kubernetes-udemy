@@ -1,0 +1,13 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: hello-world
+spec:
+  template:
+    spec:
+      containers:
+      - name: test
+        image: ubuntu:latest
+        command: ["bin/bash", "-c"]
+        args: ["i=0 \n while [ $i -lt 100 ]\n do\n /bin/echo Hello World in line $i\n let i=$i+1\n sleep 1\n done"]
+      restartPolicy: Never

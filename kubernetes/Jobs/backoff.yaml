@@ -1,0 +1,17 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: hello-world-parallel-backoff
+spec:
+  completions: 4 # Total number of completions needed, if it is 2 and parallelism is 4, it will run 4 pods but only 2 need to succeed
+  parallelism: 4 # Number of pods to run in parallel, will be executed 4 times concurrently
+  backoffLimit: 2 # Number of retries before marking job as failed
+  activeDeadlineSeconds: 20 # Total time in seconds a job is allowed to run
+  template:
+    spec:
+      containers:
+      - name: test
+        image: ubuntu:latest
+        command: ["bin/bash", "-c"]
+        args: ["i=0 \n while [ $i -lt 20 ]\n do\n /bin/echo Hello World in line $i from pod $(hostname)\n let i=$i+1\n sleep 1\n done"]
+      restartPolicy: OnFailure
