@@ -193,3 +193,14 @@ suspend: true
 
 #add annotations, imperative way
 $ kubectl annotate pod <pod-name> <key>=<value>
+
+#edit manifests on the fly, while the object is alive
+#attributes like replicas and image can be change, but like namespace cannot
+$ kubectl edit <object> <object-name>
+#example
+$ kubectl edit deploy nginx-deployment
+
+#patch, you need another yaml where will be the item to patch
+$ kubectl patch <object> <object-name> --patch-file <patch-file>
+#example
+$ kubectl patch deploy nginx-deployment --patch-file deployment-patch.yaml
