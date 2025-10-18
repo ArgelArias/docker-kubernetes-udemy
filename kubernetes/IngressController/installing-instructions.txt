@@ -1,0 +1,9 @@
+Download and install helm
+
+#create the namespace where to use it
+$ kubectl create ns <namespace-name>
+#for example
+$ kubectl create ns ingress-nginx
+
+helm repo add ingress-nginx https://kubernetes.github.io/ingress-nginx
+helm install -n ingress-nginx ingress-nginx ingress-nginx/ingress-nginx

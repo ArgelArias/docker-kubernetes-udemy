@@ -188,3 +188,8 @@ $ echo <encrypted-text> | base64 -d
 suspend: true
 
 #for remove the suspend state, put it to false, or simply delete the line from the manifest.
+
+##############################################################
+
+#add annotations, imperative way
+$ kubectl annotate pod <pod-name> <key>=<value>

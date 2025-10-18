@@ -71,3 +71,8 @@ $ minikube start -p <profile-name> --kubernetes-version=<version-number>
 
 #run kubectl for each profile
 minikube -p <profile-name> kubectl get nodes
+
+###########################################################################
+
+#access to NodePorts when running in Windows
+$ minikube service <service-name> --url
