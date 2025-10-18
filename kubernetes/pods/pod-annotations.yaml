@@ -1,0 +1,23 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nginx-anotated
+  labels:
+    project: website
+    environment: development
+  annotations:
+    myannotation: "This is my first annotation"
+    myannotation2: "Keys and values can be anything"
+spec:
+  containers:
+    - name: nginx
+      image: nginx:latest
+      ports:
+        - containerPort: 80
+      resources:
+        requests:
+          memory: "64Mi"
+          cpu: "250m"
+        limits:
+          memory: "128Mi"
+          cpu: "500m"
