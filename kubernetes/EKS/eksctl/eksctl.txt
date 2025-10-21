@@ -1,0 +1,5 @@
+#create a cluster with eksctl
+$ eksctl create cluster --name <cluster-name> -region <region-code>
+
+#create a cluster from a yaml file
+$ eksctl create cluster -f <yaml-file>
