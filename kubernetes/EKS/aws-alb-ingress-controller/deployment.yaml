@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: nginx-deployment-alb
+    name: nginx-deployment-alb
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: nginx-deployment-alb
+  template:
+    metadata:
+      labels:
+        app: nginx-deployment-alb
+    spec:
+      containers:
+      - image: nginx:latest
+        name: nginx
+        ports:
+        - containerPort: 80  
+        resources:
+          requests:
+            cpu: "100m"
+            memory: "128Mi"
+          limits:
+            cpu: "250m"
+            memory: "256Mi"

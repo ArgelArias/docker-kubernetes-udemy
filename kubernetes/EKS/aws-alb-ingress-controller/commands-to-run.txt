@@ -1,0 +1,22 @@
+$ aws iam create-policy \
+    --policy-name AWSLoadBalancerControllerIAMPolicy \
+    --policy-document file://iam_policy.json
+
+# activar autenticacion oidc con el cluster
+eksctl utils associate-iam-oidc-provider --cluster vcc-eksctl --approve
+
+eksctl create iamserviceaccount \
+  --cluster=vcc-eksctl \
+  --namespace=kube-system \
+  --name=aws-load-balancer-controller \
+  --role-name "AmazonEKSLoadBalancerControllerRole" \
+  --attach-policy-arn=arn:aws:iam::620241740192:policy/AWSLoadBalancerControllerIAMPolicy \
+  --approve
+
+
+#instalar helm
+#https://artifacthub.io/packages/helm/aws/aws-load-balancer-controller
+helm install aws-load-balancer-controller eks/aws-load-balancer-controller --set clusterName=vcc-eksctl -n kube-system --set serviceAccount.create=false --set serviceAccount.name=aws-load-balancer-controller
+
+
+aws iam delete-policy --policy-arn arn:aws:iam::620241740192:policy/AWSLoadBalancerControllerIAMPolicy
