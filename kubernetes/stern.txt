@@ -1,0 +1,8 @@
+#stern is a tool to follow the logs from all the pods of the same Deployment or replicaSet
+#previous installation is required
+
+#go to work
+$ stern <Deployment-name or replicaSet-name>
+
+#see the logs from a different namespace
+$ stern -n <namespace> <Deployment-name or replicaSet-name>

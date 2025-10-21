@@ -1,0 +1,15 @@
+#previous installation is required
+
+#add to the repo
+helm repo add <local-repository-name> <external-url>
+
+#install from the repo
+helm install <local-release-name> <local-repo>/tool
+
+#list the releases installed
+helm ls
+#from all the namespaces
+heml ls -A
+
+#unistall a release
+helm unistall <local-release-name>
