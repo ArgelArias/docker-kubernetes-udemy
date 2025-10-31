@@ -1,0 +1,14 @@
+#if it is the first time for create the configuration
+docker build -t ubuntu:22.04 .
+
+docker volume create ubuntu-data
+
+------------------------------------------------------
+
+#create and start the container
+docker run -d --name myubuntu -p 22:22 -v ubuntu-data:/data ubuntu:22.04
+
+ssh root@localhost
+
+docker stop myubuntu
+docker rm myubuntu
